@@ -5,8 +5,17 @@ metadata:
 spec:
   replicas: 2
   selector:
-    matchLabels:
-      app: product-app
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - product-app
+      - key: environment
+        operator: In
+        values:
+          - dev
+          - qa
+
   template:
     metadata:
       labels:
