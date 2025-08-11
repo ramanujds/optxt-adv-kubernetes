@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: product-app
+  template:
+    metadata:
+      labels:
+        app: product-app
+
+    spec:
+      containers:
+        - name: product-app-container
+          image: ram1uj/k8s-product-app
+          ports:
+            - containerPort: 8080
