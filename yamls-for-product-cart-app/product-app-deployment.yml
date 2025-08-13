@@ -18,6 +18,21 @@ spec:
           image: ram1uj/k8s-product-app
           ports:
             - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /api/products
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            failureThreshold: 3
+
+          livenessProbe:
+            httpGet:
+              path: /api/products
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            failureThreshold: 3
 
           resources:
             requests:
@@ -27,3 +42,4 @@ spec:
             limits:
               cpu: "1"
               memory: "512Mi"
+

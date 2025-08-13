@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: product-app
+  namespace: qa
 spec:
   replicas: 2
   selector:
@@ -22,6 +23,15 @@ spec:
         app: product-app
 
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: dedicated
+                    operator: In
+                    values:
+                      - cart-app
       containers:
         - name: product-app-container
           image: ram1uj/k8s-product-app

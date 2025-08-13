@@ -1,0 +1,8 @@
+kubectl taint nodes node1 dedicated=cart-app:NoSchedule
+
+
+tolerations:
+- key: "dedicated"
+  operator: "Equal"
+  value: "cart-app"
+  effect: "NoSchedule"
