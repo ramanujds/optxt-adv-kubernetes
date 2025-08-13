@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: spring-boot-configmap
+data:
+  message: 'Let''s learn Kubernetes with Spring Boot!'
+  fun-message: 'Kubernetes is fun!'
+  another-message: 'This is another message from the ConfigMap.'

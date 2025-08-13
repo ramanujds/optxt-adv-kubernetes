@@ -17,4 +17,9 @@ spec:
                   image: ram1uj/spring-boot:latest
                   ports:
                       - containerPort: 5000
-                  
+                  env:
+                    - name: APP_MESSAGE
+                      valueFrom:
+                        secretKeyRef:
+                          name: spring-boot-secret
+                          key: message
