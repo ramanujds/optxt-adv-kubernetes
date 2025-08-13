@@ -1,0 +1,9 @@
+resources:
+  - ../../base
+
+namePrefix: dev-
+commonLabels:
+    environment: dev
+
+patches:
+  - path: patch-deployment.yaml

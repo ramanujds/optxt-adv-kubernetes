@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-service
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product-service
+  template:
+    metadata:
+      labels:
+        app: product-service
+
+    spec:
+      containers:
+        - name: product-app-container
+          image: ram1uj/k8s-product-app
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /api/products
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            failureThreshold: 3
+
+          livenessProbe:
+            httpGet:
+              path: /api/products
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            failureThreshold: 3
+
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "256Mi"
+
+            limits:
+              cpu: "1"
+              memory: "512Mi"
+

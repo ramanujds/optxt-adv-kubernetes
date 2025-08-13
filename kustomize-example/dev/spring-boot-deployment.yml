@@ -20,6 +20,6 @@ spec:
                   env:
                     - name: APP_MESSAGE
                       valueFrom:
-                        configMapKeyRef:
-                          key: fun-message
-                          name: spring-boot-configmap
+                        secretKeyRef:
+                          name: spring-boot-secret
+                          key: message

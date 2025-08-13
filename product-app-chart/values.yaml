@@ -1,0 +1,35 @@
+replicaCount: 1
+
+image:
+  repository: ram1uj/spring-boot
+  pullPolicy: Always
+  tag: "latest"
+  containerPort: 5000
+
+
+
+podLabels: { }
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: NodePort
+  port: 80
+
+
+resources: {}
+
+
+volumes: []
+
+
+volumeMounts: []
+
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

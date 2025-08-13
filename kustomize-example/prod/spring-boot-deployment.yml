@@ -14,12 +14,12 @@ spec:
         spec:
             containers:
                 - name: spring-boot-container
-                  image: ram1uj/spring-boot:latest
+                  image: ram1uj/spring-boot:v1
                   ports:
                       - containerPort: 5000
                   env:
                     - name: APP_MESSAGE
                       valueFrom:
-                        configMapKeyRef:
-                          key: fun-message
-                          name: spring-boot-configmap
+                        secretKeyRef:
+                          name: spring-boot-secret
+                          key: message
